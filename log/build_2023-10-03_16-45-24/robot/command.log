@@ -1,0 +1,6 @@
+Invoking command in '/home/jermito/rina_ws/build/robot': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake /home/jermito/rina_ws/src/robot -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/jermito/rina_ws/install/robot
+Invoked command in '/home/jermito/rina_ws/build/robot' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake /home/jermito/rina_ws/src/robot -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/jermito/rina_ws/install/robot
+Invoking command in '/home/jermito/rina_ws/build/robot': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/jermito/rina_ws/build/robot -- -j8 -l8
+Invoked command in '/home/jermito/rina_ws/build/robot' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/jermito/rina_ws/build/robot -- -j8 -l8
+Invoking command in '/home/jermito/rina_ws/build/robot': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /home/jermito/rina_ws/build/robot
+Invoked command in '/home/jermito/rina_ws/build/robot' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /home/jermito/rina_ws/build/robot

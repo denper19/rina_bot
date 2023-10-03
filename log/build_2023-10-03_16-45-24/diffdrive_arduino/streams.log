@@ -1,0 +1,86 @@
+[0.013s] Invoking command in '/home/jermito/rina_ws/build/diffdrive_arduino': CMAKE_PREFIX_PATH=/home/jermito/rina_ws/install/serial:/home/jermito/rina_ws/install/ydlidar_ros2_driver:/home/jermito/rina_ws/install/diffdrive_arduino:/home/jermito/rina_ws/install/robot:/opt/ros/foxy /usr/bin/cmake /home/jermito/rina_ws/src/diffdrive_arduino -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/jermito/rina_ws/install/diffdrive_arduino
+[0.071s] -- The C compiler identification is GNU 9.4.0
+[0.124s] -- The CXX compiler identification is GNU 9.4.0
+[0.129s] -- Check for working C compiler: /usr/bin/cc
+[0.197s] -- Check for working C compiler: /usr/bin/cc -- works
+[0.198s] -- Detecting C compiler ABI info
+[0.267s] -- Detecting C compiler ABI info - done
+[0.292s] -- Detecting C compile features
+[0.293s] -- Detecting C compile features - done
+[0.296s] -- Check for working CXX compiler: /usr/bin/c++
+[0.380s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[0.381s] -- Detecting CXX compiler ABI info
+[0.470s] -- Detecting CXX compiler ABI info - done
+[0.487s] -- Detecting CXX compile features
+[0.487s] -- Detecting CXX compile features - done
+[0.491s] -- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.521s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[0.521s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.779s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.805s] -- Found serial: 1.2.1 (/home/jermito/rina_ws/install/serial/share/serial/cmake)
+[0.809s] -- Found hardware_interface: 0.11.0 (/opt/ros/foxy/share/hardware_interface/cmake)
+[0.875s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.882s] -- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[0.985s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  
+[1.044s] -- Found FastRTPS: /opt/ros/foxy/include  
+[1.115s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.913s] -- Found controller_manager: 0.11.0 (/opt/ros/foxy/share/controller_manager/cmake)
+[2.026s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[2.028s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[2.030s] -- Looking for pthread.h
+[2.099s] -- Looking for pthread.h - found
+[2.099s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[2.213s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+[2.213s] -- Looking for pthread_create in pthreads
+[2.287s] -- Looking for pthread_create in pthreads - not found
+[2.287s] -- Looking for pthread_create in pthread
+[2.368s] -- Looking for pthread_create in pthread - found
+[2.371s] -- Found Threads: TRUE  
+[3.151s] -- Configuring done
+[3.200s] -- Generating done
+[3.201s] -- Build files have been written to: /home/jermito/rina_ws/build/diffdrive_arduino
+[3.209s] Invoked command in '/home/jermito/rina_ws/build/diffdrive_arduino' returned '0': CMAKE_PREFIX_PATH=/home/jermito/rina_ws/install/serial:/home/jermito/rina_ws/install/ydlidar_ros2_driver:/home/jermito/rina_ws/install/diffdrive_arduino:/home/jermito/rina_ws/install/robot:/opt/ros/foxy /usr/bin/cmake /home/jermito/rina_ws/src/diffdrive_arduino -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/jermito/rina_ws/install/diffdrive_arduino
+[3.210s] Invoking command in '/home/jermito/rina_ws/build/diffdrive_arduino': CMAKE_PREFIX_PATH=/home/jermito/rina_ws/install/serial:/home/jermito/rina_ws/install/ydlidar_ros2_driver:/home/jermito/rina_ws/install/diffdrive_arduino:/home/jermito/rina_ws/install/robot:/opt/ros/foxy /usr/bin/cmake --build /home/jermito/rina_ws/build/diffdrive_arduino -- -j8 -l8
+[3.267s] [35m[1mScanning dependencies of target diffdrive_arduino[0m
+[3.268s] [35m[1mScanning dependencies of target fake_robot[0m
+[3.334s] [ 14%] [32mBuilding CXX object CMakeFiles/fake_robot.dir/src/fake_robot.cpp.o[0m
+[3.337s] [ 28%] [32mBuilding CXX object CMakeFiles/fake_robot.dir/src/wheel.cpp.o[0m
+[3.355s] [ 42%] [32mBuilding CXX object CMakeFiles/diffdrive_arduino.dir/src/wheel.cpp.o[0m
+[3.360s] [ 57%] [32mBuilding CXX object CMakeFiles/diffdrive_arduino.dir/src/diffdrive_arduino.cpp.o[0m
+[3.363s] [ 71%] [32mBuilding CXX object CMakeFiles/diffdrive_arduino.dir/src/arduino_comms.cpp.o[0m
+[6.552s] [ 85%] [32m[1mLinking CXX shared library libfake_robot.so[0m
+[6.562s] [100%] [32m[1mLinking CXX shared library libdiffdrive_arduino.so[0m
+[6.738s] [100%] Built target fake_robot
+[6.756s] [100%] Built target diffdrive_arduino
+[6.767s] Invoked command in '/home/jermito/rina_ws/build/diffdrive_arduino' returned '0': CMAKE_PREFIX_PATH=/home/jermito/rina_ws/install/serial:/home/jermito/rina_ws/install/ydlidar_ros2_driver:/home/jermito/rina_ws/install/diffdrive_arduino:/home/jermito/rina_ws/install/robot:/opt/ros/foxy /usr/bin/cmake --build /home/jermito/rina_ws/build/diffdrive_arduino -- -j8 -l8
+[6.794s] Invoking command in '/home/jermito/rina_ws/build/diffdrive_arduino': CMAKE_PREFIX_PATH=/home/jermito/rina_ws/install/serial:/home/jermito/rina_ws/install/ydlidar_ros2_driver:/home/jermito/rina_ws/install/diffdrive_arduino:/home/jermito/rina_ws/install/robot:/opt/ros/foxy /usr/bin/cmake --install /home/jermito/rina_ws/build/diffdrive_arduino
+[6.802s] -- Install configuration: ""
+[6.802s] -- Execute custom install script
+[6.802s] -- Symlinking: /home/jermito/rina_ws/install/diffdrive_arduino/share/diffdrive_arduino//robot_hardware.xml
+[6.810s] -- Symlinking: /home/jermito/rina_ws/install/diffdrive_arduino/share/diffdrive_arduino//fake_robot_hardware.xml
+[6.820s] -- Symlinking: /home/jermito/rina_ws/install/diffdrive_arduino/lib/libdiffdrive_arduino.so
+[6.828s] -- Symlinking: /home/jermito/rina_ws/install/diffdrive_arduino/lib/libfake_robot.so
+[6.836s] -- Symlinking: /home/jermito/rina_ws/install/diffdrive_arduino/share/diffdrive_arduino/controllers/robot_controller_example.yaml
+[6.845s] -- Symlinking: /home/jermito/rina_ws/install/diffdrive_arduino/share/diffdrive_arduino/fake_robot.launch.py
+[6.854s] -- Symlinking: /home/jermito/rina_ws/install/diffdrive_arduino/share/diffdrive_arduino/test_robot.launch.py
+[6.863s] -- Symlinking: /home/jermito/rina_ws/install/diffdrive_arduino/share/diffdrive_arduino/environment/library_path.sh
+[6.872s] -- Symlinking: /home/jermito/rina_ws/install/diffdrive_arduino/share/diffdrive_arduino/environment/library_path.dsv
+[6.880s] -- Symlinking: /home/jermito/rina_ws/install/diffdrive_arduino/share/ament_index/resource_index/package_run_dependencies/diffdrive_arduino
+[6.889s] -- Symlinking: /home/jermito/rina_ws/install/diffdrive_arduino/share/ament_index/resource_index/parent_prefix_path/diffdrive_arduino
+[6.896s] -- Symlinking: /home/jermito/rina_ws/install/diffdrive_arduino/share/diffdrive_arduino/environment/ament_prefix_path.sh
+[6.903s] -- Symlinking: /home/jermito/rina_ws/install/diffdrive_arduino/share/diffdrive_arduino/environment/ament_prefix_path.dsv
+[6.911s] -- Symlinking: /home/jermito/rina_ws/install/diffdrive_arduino/share/diffdrive_arduino/environment/path.sh
+[6.918s] -- Symlinking: /home/jermito/rina_ws/install/diffdrive_arduino/share/diffdrive_arduino/environment/path.dsv
+[6.925s] -- Symlinking: /home/jermito/rina_ws/install/diffdrive_arduino/share/diffdrive_arduino/local_setup.bash
+[6.933s] -- Symlinking: /home/jermito/rina_ws/install/diffdrive_arduino/share/diffdrive_arduino/local_setup.sh
+[6.940s] -- Symlinking: /home/jermito/rina_ws/install/diffdrive_arduino/share/diffdrive_arduino/local_setup.zsh
+[6.947s] -- Symlinking: /home/jermito/rina_ws/install/diffdrive_arduino/share/diffdrive_arduino/local_setup.dsv
+[6.954s] -- Symlinking: /home/jermito/rina_ws/install/diffdrive_arduino/share/diffdrive_arduino/package.dsv
+[6.963s] -- Symlinking: /home/jermito/rina_ws/install/diffdrive_arduino/share/ament_index/resource_index/packages/diffdrive_arduino
+[6.970s] -- Symlinking: /home/jermito/rina_ws/install/diffdrive_arduino/share/ament_index/resource_index/hardware_interface__pluginlib__plugin/diffdrive_arduino
+[6.977s] -- Symlinking: /home/jermito/rina_ws/install/diffdrive_arduino/share/diffdrive_arduino/cmake/ament_cmake_export_libraries-extras.cmake
+[6.985s] -- Symlinking: /home/jermito/rina_ws/install/diffdrive_arduino/share/diffdrive_arduino/cmake/ament_cmake_export_dependencies-extras.cmake
+[6.992s] -- Symlinking: /home/jermito/rina_ws/install/diffdrive_arduino/share/diffdrive_arduino/cmake/diffdrive_arduinoConfig.cmake
+[6.999s] -- Symlinking: /home/jermito/rina_ws/install/diffdrive_arduino/share/diffdrive_arduino/cmake/diffdrive_arduinoConfig-version.cmake
+[7.006s] -- Symlinking: /home/jermito/rina_ws/install/diffdrive_arduino/share/diffdrive_arduino/package.xml
+[7.018s] Invoked command in '/home/jermito/rina_ws/build/diffdrive_arduino' returned '0': CMAKE_PREFIX_PATH=/home/jermito/rina_ws/install/serial:/home/jermito/rina_ws/install/ydlidar_ros2_driver:/home/jermito/rina_ws/install/diffdrive_arduino:/home/jermito/rina_ws/install/robot:/opt/ros/foxy /usr/bin/cmake --install /home/jermito/rina_ws/build/diffdrive_arduino

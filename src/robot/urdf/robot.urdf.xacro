@@ -1,0 +1,83 @@
+<?xml version="1.0" ?>
+<robot name="ros" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find robot)/urdf/materials.xacro" />
+<xacro:include filename="$(find robot)/urdf/properties.xacro" />
+
+<link name="base_link">
+  <inertial>
+    <origin xyz="0.0025530868570427627 0.07969811180367155 0.0007548948976046698" rpy="0 0 0"/>
+    <mass value="1.449043338359083"/>
+    <inertia ixx="0.012" iyy="0.013382" izz="0.01271" ixy="0.0" iyz="0.000167" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find robot)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="green"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find robot)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Wheel_1_1">
+  <inertial>
+    <origin xyz="0.027427639752719224 2.340624085342413e-06 1.7824236978047914e-07" rpy="0 0 0"/>
+    <mass value="0.05590599422944014"/>
+    <inertia ixx="5e-05" iyy="3.2e-05" izz="3.2e-05" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.126354 -0.051035 0.077546" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find robot)/meshes/Wheel_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.126354 -0.051035 0.077546" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find robot)/meshes/Wheel_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Wheel_2_1">
+  <inertial>
+    <origin xyz="-0.02742763376176742 2.34062408542568e-06 1.5656025319221722e-07" rpy="0 0 0"/>
+    <mass value="0.05590599422944014"/>
+    <inertia ixx="5e-05" iyy="3.2e-05" izz="3.2e-05" ixy="-0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.121246 -0.051035 0.077546" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find robot)/meshes/Wheel_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+  <collision>
+    <origin xyz="0.121246 -0.051035 0.077546" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find robot)/meshes/Wheel_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="right_wheel_joint" type="continuous">
+  <origin xyz="0.126354 0.051035 -0.077546" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="Wheel_1_1"/>
+</joint>
+
+<joint name="left_wheel_joint" type="continuous">
+  <origin xyz="-0.121246 0.051035 -0.077546" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="Wheel_2_1"/>
+</joint>
+
+</robot>
+ 
