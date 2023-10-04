@@ -11,6 +11,9 @@
 /home/jermito/rina_ws/install/robot/share/robot/meshes/Wheel_1_1.stl
 /home/jermito/rina_ws/install/robot/share/robot/meshes/Wheel_2_1.stl
 /home/jermito/rina_ws/install/robot/share/robot/meshes/base_link.stl
+/home/jermito/rina_ws/install/robot/share/robot/meshes/chassis/base_link.stl
+/home/jermito/rina_ws/install/robot/share/robot/meshes/lidar/base_link.stl
+/home/jermito/rina_ws/install/robot/share/robot/meshes/wheel/base_link.stl
 /home/jermito/rina_ws/install/robot/share/ament_index/resource_index/package_run_dependencies/robot
 /home/jermito/rina_ws/install/robot/share/ament_index/resource_index/parent_prefix_path/robot
 /home/jermito/rina_ws/install/robot/share/robot/environment/ament_prefix_path.sh
