@@ -5,100 +5,80 @@
 <xacro:include filename="$(find robot)/urdf/properties.xacro" />
 
 <link name="base_link">
-</link>
-
-<!-- BASE_FOOTPRINT LINK -->
-
-<joint name="base_footprint_joint" type="fixed">
-    <parent link="base_link"/>
-    <child link="base_footprint"/>
-    <origin xyz="0 0 0" rpy="0 0 0"/>
-</joint>
-
-<link name="base_footprint">
-</link>
-
-<link name="chassis_link">
   <inertial>
-    <origin xyz="0.0005529614189068058 0.14968759146166039 0.0010740992367894852" rpy="0 0 0"/>
-    <mass value="1.2745335608269892"/>
-    <inertia ixx="0.008772" iyy="0.010315" izz="0.012456" ixy="0.0" iyz="-0.000402" ixz="-0.0"/>
+    <origin xyz="-0.07617652640143699 0.0009658129509204017 0.0007548948976041592" rpy="0 0 0"/>
+    <mass value="1.449043338359083"/>
+    <inertia ixx="0.013382" iyy="0.012" izz="0.01271" ixy="-0.0" iyz="-0.0" ixz="-0.000167"/>
   </inertial>
   <visual>
-    <origin xyz="0 0 0" rpy="0 0 -${pi/2}"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find robot)/meshes/chassis/base_link.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find robot)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
-    <origin xyz="0 0 0" rpy="0 0 -${pi/2}"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find robot)/meshes/chassis/base_link.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find robot)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
 <link name="right_wheel">
   <inertial>
-    <origin xyz="1.0841058295907897e-08 -2.1769788347466894e-06 -0.0005723632427566792" rpy="0 0 0"/>
-    <mass value="0.05590599422944008"/>
-    <inertia ixx="3.2e-05" iyy="3.2e-05" izz="5e-05" ixy="-0.0" iyz="-0.0" ixz="0.0"/>
+    <origin xyz="-1.7552218505301198e-06 0.027427365846597315 1.782423703911018e-07" rpy="0 0 0"/>
+    <mass value="0.05590599422944014"/>
+    <inertia ixx="3.2e-05" iyy="5e-05" izz="3.2e-05" ixy="-0.0" iyz="0.0" ixz="-0.0"/>
   </inertial>
   <visual>
-    <origin xyz="0 0 0" rpy="${pi/2} 0 0"/>
+    <origin xyz="0.047514 -0.124767 0.077546" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find robot)/meshes/wheel/base_link.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find robot)/meshes/Wheel_1_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
-    <origin xyz="0 0 0" rpy="${pi/2} 0 0"/>
+    <origin xyz="0.047514 -0.124767 0.077546" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find robot)/meshes/wheel/base_link.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find robot)/meshes/Wheel_1_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
 <link name="left_wheel">
   <inertial>
-    <origin xyz="1.0841058295907897e-08 -2.1769788347466894e-06 -0.0005723632427566792" rpy="0 0 0"/>
-    <mass value="0.05590599422944008"/>
-    <inertia ixx="3.2e-05" iyy="3.2e-05" izz="5e-05" ixy="-0.0" iyz="-0.0" ixz="0.0"/>
+    <origin xyz="-1.7552218502803196e-06 -0.02742790766788944 1.5656025187382738e-07" rpy="0 0 0"/>
+    <mass value="0.05590599422944014"/>
+    <inertia ixx="3.2e-05" iyy="5e-05" izz="3.2e-05" ixy="0.0" iyz="0.0" ixz="0.0"/>
   </inertial>
   <visual>
-    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <origin xyz="0.047514 0.122833 0.077546" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find robot)/meshes/wheel/base_link.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find robot)/meshes/Wheel_2_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
-    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <origin xyz="0.047514 0.122833 0.077546" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find robot)/meshes/wheel/base_link.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find robot)/meshes/Wheel_2_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<joint name="chassis_joint" type="fixed">
-    <parent link="base_link"/>
-    <child link="chassis_link"/>
-    <origin xyz="-0.12 0 0.015"/>
-</joint>
-
 <joint name="right_wheel_joint" type="continuous">
-  <origin xyz="0.119 -0.1538 -0.059" rpy="0 0 0"/>
-  <parent link="chassis_link"/>
+  <origin xyz="-0.047514 0.124767 -0.077546" rpy="0 0 0"/>
+  <parent link="base_link"/>
   <child link="right_wheel"/>
-  <axis xyz="0 1 0"/>
+  <axis xyz="-0.0 1.0 0.0"/>
 </joint>
 
 <joint name="left_wheel_joint" type="continuous">
-  <origin xyz="0.119 -0.1538 0.059" rpy="0 0 0"/>
-  <parent link="chassis_link"/>
+  <origin xyz="-0.047514 -0.122833 -0.077546" rpy="0 0 0"/>
+  <parent link="base_link"/>
   <child link="left_wheel"/>
-  <axis xyz="0 -1 0"/>
+  <axis xyz="-0.0 -1.0 -0.0"/>
 </joint>
 
 </robot>

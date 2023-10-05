@@ -1,0 +1,37 @@
+[0.051s] Invoking command in '/home/jermito/rina_ws/build/robot': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/jermito/rina_ws/build/robot -- -j8 -l8
+[0.122s] Invoked command in '/home/jermito/rina_ws/build/robot' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/jermito/rina_ws/build/robot -- -j8 -l8
+[0.187s] Invoking command in '/home/jermito/rina_ws/build/robot': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /home/jermito/rina_ws/build/robot
+[0.203s] -- Install configuration: ""
+[0.204s] -- Execute custom install script
+[0.206s] -- Up-to-date symlink: /home/jermito/rina_ws/install/robot/share/robot/config/controller.yaml
+[0.207s] -- Up-to-date symlink: /home/jermito/rina_ws/install/robot/share/robot/urdf/control/gazebo_control.xacro
+[0.207s] -- Up-to-date symlink: /home/jermito/rina_ws/install/robot/share/robot/urdf/control/ros2_control.xacro
+[0.207s] -- Up-to-date symlink: /home/jermito/rina_ws/install/robot/share/robot/urdf/materials.xacro
+[0.208s] -- Up-to-date symlink: /home/jermito/rina_ws/install/robot/share/robot/urdf/properties.xacro
+[0.208s] -- Up-to-date symlink: /home/jermito/rina_ws/install/robot/share/robot/urdf/robot.urdf.xacro
+[0.208s] -- Up-to-date symlink: /home/jermito/rina_ws/install/robot/share/robot/urdf/robot_core.urdf.xacro
+[0.209s] -- Up-to-date symlink: /home/jermito/rina_ws/install/robot/share/robot/urdf/sensors/lidar.xacro
+[0.209s] -- Up-to-date symlink: /home/jermito/rina_ws/install/robot/share/robot/launch/gazebo.launch.py
+[0.209s] -- Up-to-date symlink: /home/jermito/rina_ws/install/robot/share/robot/launch/rsp.launch.py
+[0.211s] -- Up-to-date symlink: /home/jermito/rina_ws/install/robot/share/robot/meshes/Wheel_1_1.stl
+[0.212s] -- Up-to-date symlink: /home/jermito/rina_ws/install/robot/share/robot/meshes/Wheel_2_1.stl
+[0.212s] -- Up-to-date symlink: /home/jermito/rina_ws/install/robot/share/robot/meshes/base_link.stl
+[0.212s] -- Up-to-date symlink: /home/jermito/rina_ws/install/robot/share/robot/meshes/chassis/base_link.stl
+[0.213s] -- Up-to-date symlink: /home/jermito/rina_ws/install/robot/share/robot/meshes/lidar/base_link.stl
+[0.213s] -- Up-to-date symlink: /home/jermito/rina_ws/install/robot/share/robot/meshes/wheel/base_link.stl
+[0.213s] -- Up-to-date symlink: /home/jermito/rina_ws/install/robot/share/ament_index/resource_index/package_run_dependencies/robot
+[0.214s] -- Up-to-date symlink: /home/jermito/rina_ws/install/robot/share/ament_index/resource_index/parent_prefix_path/robot
+[0.215s] -- Up-to-date symlink: /home/jermito/rina_ws/install/robot/share/robot/environment/ament_prefix_path.sh
+[0.215s] -- Up-to-date symlink: /home/jermito/rina_ws/install/robot/share/robot/environment/ament_prefix_path.dsv
+[0.216s] -- Up-to-date symlink: /home/jermito/rina_ws/install/robot/share/robot/environment/path.sh
+[0.217s] -- Up-to-date symlink: /home/jermito/rina_ws/install/robot/share/robot/environment/path.dsv
+[0.218s] -- Up-to-date symlink: /home/jermito/rina_ws/install/robot/share/robot/local_setup.bash
+[0.218s] -- Up-to-date symlink: /home/jermito/rina_ws/install/robot/share/robot/local_setup.sh
+[0.222s] -- Up-to-date symlink: /home/jermito/rina_ws/install/robot/share/robot/local_setup.zsh
+[0.223s] -- Up-to-date symlink: /home/jermito/rina_ws/install/robot/share/robot/local_setup.dsv
+[0.223s] -- Symlinking: /home/jermito/rina_ws/install/robot/share/robot/package.dsv
+[0.237s] -- Up-to-date symlink: /home/jermito/rina_ws/install/robot/share/ament_index/resource_index/packages/robot
+[0.239s] -- Up-to-date symlink: /home/jermito/rina_ws/install/robot/share/robot/cmake/robotConfig.cmake
+[0.239s] -- Up-to-date symlink: /home/jermito/rina_ws/install/robot/share/robot/cmake/robotConfig-version.cmake
+[0.239s] -- Up-to-date symlink: /home/jermito/rina_ws/install/robot/share/robot/package.xml
+[0.245s] Invoked command in '/home/jermito/rina_ws/build/robot' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /home/jermito/rina_ws/build/robot

@@ -10,7 +10,6 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch_ros.actions import Node
 
 
-
 def generate_launch_description():
 
 
@@ -56,6 +55,6 @@ def generate_launch_description():
         rsp,
         gazebo,
         spawn_entity,
-        diff_drive_spawner,
-        joint_broad_spawner
+        # diff_drive_spawner,
+        # joint_broad_spawner
     ])

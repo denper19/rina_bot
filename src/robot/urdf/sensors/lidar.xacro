@@ -11,14 +11,14 @@
     <inertia ixx="8e-05" iyy="0.000141" izz="0.000162" ixy="0.0" iyz="-0.0" ixz="-2.4e-05"/>
   </inertial>
   <visual>
-    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <origin xyz="0 0 0" rpy="0 0 ${pi}"/>
     <geometry>
       <mesh filename="file://$(find robot)/meshes/lidar/base_link.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
-    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <origin xyz="0 0 0" rpy="0 0 ${pi}"/>
     <geometry>
       <mesh filename="file://$(find robot)/meshes/lidar/base_link.stl" scale="0.001 0.001 0.001"/>
     </geometry>
@@ -28,7 +28,7 @@
 <joint name="lidar_joint" type="fixed">
     <parent link="chassis_link"/>
     <child link="lidar_link"/>
-    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <origin xyz="0.119 0 0.13" rpy="0 0 0"/>
 </joint>
 
 </robot>
