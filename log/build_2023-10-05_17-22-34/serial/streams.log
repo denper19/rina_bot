@@ -1,0 +1,87 @@
+[0.064s] Invoking command in '/home/jermito/rina_ws/build/serial': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake /home/jermito/rina_ws/src/serial -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/jermito/rina_ws/install/serial
+[0.156s] -- The C compiler identification is GNU 9.4.0
+[0.262s] -- The CXX compiler identification is GNU 9.4.0
+[0.269s] -- Check for working C compiler: /usr/bin/cc
+[0.375s] -- Check for working C compiler: /usr/bin/cc -- works
+[0.376s] -- Detecting C compiler ABI info
+[0.518s] -- Detecting C compiler ABI info - done
+[0.564s] -- Detecting C compile features
+[0.564s] -- Detecting C compile features - done
+[0.569s] -- Check for working CXX compiler: /usr/bin/c++
+[0.716s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[0.717s] -- Detecting CXX compiler ABI info
+[0.863s] -- Detecting CXX compiler ABI info - done
+[0.903s] -- Detecting CXX compile features
+[0.905s] -- Detecting CXX compile features - done
+[0.910s] -- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.976s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[0.976s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[1.361s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[1.415s] -- Found ament_cmake_gtest: 0.9.12 (/opt/ros/foxy/share/ament_cmake_gtest/cmake)
+[1.424s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.71.0/BoostConfig.cmake (found version "1.71.0")  
+[1.426s] -- Found gtest sources under '/opt/ros/foxy/src/gtest_vendor': C++ tests using 'Google Test' will be built
+[1.428s] -- Looking for pthread.h
+[1.567s] -- Looking for pthread.h - found
+[1.567s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[1.696s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+[1.696s] -- Check if compiler accepts -pthread
+[1.813s] -- Check if compiler accepts -pthread - yes
+[1.814s] -- Found Threads: TRUE  
+[1.947s] -- Configuring done
+[1.960s] -- Generating done
+[1.961s] -- Build files have been written to: /home/jermito/rina_ws/build/serial
+[1.966s] Invoked command in '/home/jermito/rina_ws/build/serial' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake /home/jermito/rina_ws/src/serial -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/jermito/rina_ws/install/serial
+[1.968s] Invoking command in '/home/jermito/rina_ws/build/serial': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/jermito/rina_ws/build/serial -- -j8 -l8
+[2.028s] [35m[1mScanning dependencies of target serial[0m
+[2.032s] [35m[1mScanning dependencies of target gtest[0m
+[2.032s] [35m[1mScanning dependencies of target gtest_main[0m
+[2.062s] [  7%] [32mBuilding CXX object CMakeFiles/serial.dir/src/serial.cc.o[0m
+[2.062s] [ 14%] [32mBuilding CXX object CMakeFiles/serial.dir/src/impl/list_ports/list_ports_linux.cc.o[0m
+[2.064s] [ 21%] [32mBuilding CXX object CMakeFiles/serial.dir/src/impl/unix.cc.o[0m
+[2.078s] [ 28%] [32mBuilding CXX object gtest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o[0m
+[2.084s] [ 35%] [32mBuilding CXX object gtest/CMakeFiles/gtest.dir/src/gtest-all.cc.o[0m
+[3.395s] [ 42%] [32m[1mLinking CXX static library libserial.a[0m
+[3.458s] [ 42%] Built target serial
+[3.473s] [35m[1mScanning dependencies of target serial_example[0m
+[3.486s] [ 50%] [32mBuilding CXX object CMakeFiles/serial_example.dir/examples/serial_example.cc.o[0m
+[4.091s] [ 57%] [32m[1mLinking CXX executable serial_example[0m
+[4.164s] [ 64%] [32m[1mLinking CXX static library libgtest_main.a[0m
+[4.237s] [ 64%] Built target gtest_main
+[4.252s] [ 64%] Built target serial_example
+[9.245s] [ 71%] [32m[1mLinking CXX static library libgtest.a[0m
+[9.345s] [ 71%] Built target gtest
+[9.359s] [35m[1mScanning dependencies of target serial-test-timer[0m
+[9.360s] [35m[1mScanning dependencies of target serial-test[0m
+[9.390s] [ 78%] [32mBuilding CXX object tests/CMakeFiles/serial-test.dir/unix_serial_tests.cc.o[0m
+[9.400s] [ 85%] [32mBuilding CXX object tests/CMakeFiles/serial-test-timer.dir/unit/unix_timer_tests.cc.o[0m
+[10.831s] [ 92%] [32m[1mLinking CXX executable serial-test-timer[0m
+[11.019s] [100%] [32m[1mLinking CXX executable serial-test[0m
+[11.089s] [100%] Built target serial-test-timer
+[11.309s] [100%] Built target serial-test
+[11.325s] Invoked command in '/home/jermito/rina_ws/build/serial' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/jermito/rina_ws/build/serial -- -j8 -l8
+[11.356s] Invoking command in '/home/jermito/rina_ws/build/serial': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /home/jermito/rina_ws/build/serial
+[11.374s] -- Install configuration: ""
+[11.377s] -- Execute custom install script
+[11.379s] -- Symlinking: /home/jermito/rina_ws/install/serial/lib/libserial.a
+[11.397s] -- Symlinking: /home/jermito/rina_ws/install/serial/include/serial/serial.h
+[11.409s] -- Symlinking: /home/jermito/rina_ws/install/serial/include/serial/v8stdint.h
+[11.419s] -- Symlinking: /home/jermito/rina_ws/install/serial/share/serial/environment/library_path.sh
+[11.428s] -- Symlinking: /home/jermito/rina_ws/install/serial/share/serial/environment/library_path.dsv
+[11.435s] -- Symlinking: /home/jermito/rina_ws/install/serial/share/ament_index/resource_index/package_run_dependencies/serial
+[11.444s] -- Symlinking: /home/jermito/rina_ws/install/serial/share/ament_index/resource_index/parent_prefix_path/serial
+[11.472s] -- Symlinking: /home/jermito/rina_ws/install/serial/share/serial/environment/ament_prefix_path.sh
+[11.486s] -- Symlinking: /home/jermito/rina_ws/install/serial/share/serial/environment/ament_prefix_path.dsv
+[11.497s] -- Symlinking: /home/jermito/rina_ws/install/serial/share/serial/environment/path.sh
+[11.506s] -- Symlinking: /home/jermito/rina_ws/install/serial/share/serial/environment/path.dsv
+[11.514s] -- Symlinking: /home/jermito/rina_ws/install/serial/share/serial/local_setup.bash
+[11.535s] -- Symlinking: /home/jermito/rina_ws/install/serial/share/serial/local_setup.sh
+[11.551s] -- Symlinking: /home/jermito/rina_ws/install/serial/share/serial/local_setup.zsh
+[11.563s] -- Symlinking: /home/jermito/rina_ws/install/serial/share/serial/local_setup.dsv
+[11.573s] -- Symlinking: /home/jermito/rina_ws/install/serial/share/serial/package.dsv
+[11.583s] -- Symlinking: /home/jermito/rina_ws/install/serial/share/ament_index/resource_index/packages/serial
+[11.591s] -- Symlinking: /home/jermito/rina_ws/install/serial/share/serial/cmake/ament_cmake_export_include_directories-extras.cmake
+[11.611s] -- Symlinking: /home/jermito/rina_ws/install/serial/share/serial/cmake/ament_cmake_export_libraries-extras.cmake
+[11.629s] -- Symlinking: /home/jermito/rina_ws/install/serial/share/serial/cmake/serialConfig.cmake
+[11.641s] -- Symlinking: /home/jermito/rina_ws/install/serial/share/serial/cmake/serialConfig-version.cmake
+[11.651s] -- Symlinking: /home/jermito/rina_ws/install/serial/share/serial/package.xml
+[11.678s] Invoked command in '/home/jermito/rina_ws/build/serial' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /home/jermito/rina_ws/build/serial
