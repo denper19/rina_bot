@@ -25,7 +25,7 @@
   <!-- <selfCollide>true</selfCollide> -->
 </gazebo>
 
-<gazebo reference="lidar_link">
+<gazebo reference="laser_frame">
   <material>Gazebo/Black</material>
   <!-- <mu1>0.2</mu1> -->
   <!-- <mu2>0.2</mu2> -->

@@ -2,7 +2,7 @@
 <robot name="rina" xmlns:xacro="http://www.ros.org/wiki/xacro" >
 
 <xacro:include filename="$(find robot)/urdf/robot.urdf.xacro" />
-<!-- <xacro:include filename="$(find robot)/urdf/sensors/lidar.xacro" /> -->
+<xacro:include filename="$(find robot)/urdf/sensors/lidar.xacro" />
 <!-- <xacro:include filename="$(find robot)/urdf/control/gazebo_control.xacro" /> -->
 <xacro:include filename="$(find robot)/urdf/control/ros2_control.xacro" />
 <!-- 

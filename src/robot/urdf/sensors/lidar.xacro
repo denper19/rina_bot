@@ -4,31 +4,13 @@
 <!-- <xacro:include filename="$(find robot)/urdf/materials.xacro" /> -->
 <!-- <xacro:include filename="$(find robot)/urdf/properties.xacro" /> -->
 
-<link name="lidar_link">
-  <inertial>
-    <origin xyz="-0.008294099570340205 -2.3249515286534618e-17 0.010701142222791043" rpy="0 0 0"/>
-    <mass value="0.18923752024949508"/>
-    <inertia ixx="8e-05" iyy="0.000141" izz="0.000162" ixy="0.0" iyz="-0.0" ixz="-2.4e-05"/>
-  </inertial>
-  <visual>
-    <origin xyz="0 0 0" rpy="0 0 ${pi}"/>
-    <geometry>
-      <mesh filename="file://$(find robot)/meshes/lidar/base_link.stl" scale="0.001 0.001 0.001"/>
-    </geometry>
-    <material name="silver"/>
-  </visual>
-  <collision>
-    <origin xyz="0 0 0" rpy="0 0 ${pi}"/>
-    <geometry>
-      <mesh filename="file://$(find robot)/meshes/lidar/base_link.stl" scale="0.001 0.001 0.001"/>
-    </geometry>
-  </collision>
+<link name="laser_frame">
 </link>
 
-<joint name="lidar_joint" type="fixed">
-    <parent link="chassis_link"/>
-    <child link="lidar_link"/>
-    <origin xyz="0.119 0 0.13" rpy="0 0 0"/>
+<joint name="laser_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="laser_frame"/>
+    <origin xyz="0 0 0.13" rpy="0 0 0"/>
 </joint>
 
 </robot>
