@@ -1,4 +1,5 @@
 /home/jermito/rina_ws/install/robot/share/robot/config/controller.yaml
+/home/jermito/rina_ws/install/robot/share/robot/config/mapper_params_online_async.yaml
 /home/jermito/rina_ws/install/robot/share/robot/urdf/control/gazebo_control.xacro
 /home/jermito/rina_ws/install/robot/share/robot/urdf/control/ros2_control.xacro
 /home/jermito/rina_ws/install/robot/share/robot/urdf/materials.xacro
