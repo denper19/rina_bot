@@ -1,5 +1,8 @@
 /home/jermito/rina_ws/install/robot/share/robot/config/controller.yaml
+/home/jermito/rina_ws/install/robot/share/robot/config/gaz_control.yaml
+/home/jermito/rina_ws/install/robot/share/robot/config/joystick.yaml
 /home/jermito/rina_ws/install/robot/share/robot/config/mapper_params_online_async.yaml
+/home/jermito/rina_ws/install/robot/share/robot/config/viz.rviz
 /home/jermito/rina_ws/install/robot/share/robot/urdf/control/gazebo_control.xacro
 /home/jermito/rina_ws/install/robot/share/robot/urdf/control/ros2_control.xacro
 /home/jermito/rina_ws/install/robot/share/robot/urdf/materials.xacro
@@ -8,6 +11,7 @@
 /home/jermito/rina_ws/install/robot/share/robot/urdf/robot_core.urdf.xacro
 /home/jermito/rina_ws/install/robot/share/robot/urdf/sensors/lidar.xacro
 /home/jermito/rina_ws/install/robot/share/robot/launch/gazebo.launch.py
+/home/jermito/rina_ws/install/robot/share/robot/launch/joystick.launch.py
 /home/jermito/rina_ws/install/robot/share/robot/launch/robot.launch.py
 /home/jermito/rina_ws/install/robot/share/robot/launch/rsp.launch.py
 /home/jermito/rina_ws/install/robot/share/robot/meshes/Wheel_1_1.stl
