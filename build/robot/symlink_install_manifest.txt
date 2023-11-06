@@ -5,10 +5,12 @@
 /home/jermito/rina_ws/install/robot/share/robot/config/viz.rviz
 /home/jermito/rina_ws/install/robot/share/robot/urdf/control/gazebo_control.xacro
 /home/jermito/rina_ws/install/robot/share/robot/urdf/control/ros2_control.xacro
+/home/jermito/rina_ws/install/robot/share/robot/urdf/inertial_macros.xacro
 /home/jermito/rina_ws/install/robot/share/robot/urdf/materials.xacro
 /home/jermito/rina_ws/install/robot/share/robot/urdf/properties.xacro
 /home/jermito/rina_ws/install/robot/share/robot/urdf/robot.urdf.xacro
 /home/jermito/rina_ws/install/robot/share/robot/urdf/robot_core.urdf.xacro
+/home/jermito/rina_ws/install/robot/share/robot/urdf/sensors/camera.xacro
 /home/jermito/rina_ws/install/robot/share/robot/urdf/sensors/lidar.xacro
 /home/jermito/rina_ws/install/robot/share/robot/launch/gazebo.launch.py
 /home/jermito/rina_ws/install/robot/share/robot/launch/joystick.launch.py
