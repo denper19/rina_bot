@@ -16,8 +16,8 @@
 
 <link name="base_link">
   <inertial>
-    <origin xyz="-0.07617652640143699 0.0009658129509204017 0.0007548948976041592" rpy="0 0 0"/>
-    <mass value="1.449043338359083"/>
+    <origin xyz="-0.028662948158421374 -9.161384338691405e-07 0.07830072749629308" rpy="0 0 0"/>
+    <mass value="1.4490433383590837"/>
     <inertia ixx="0.013382" iyy="0.012" izz="0.01271" ixy="-0.0" iyz="-0.0" ixz="-0.000167"/>
   </inertial>
   <visual>
@@ -25,7 +25,7 @@
     <geometry>
       <mesh filename="file://$(find robot)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
     </geometry>
-    <material name="silver"/>
+    <material name="plastic_glossy_grey"/>
   </visual>
   <collision>
     <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -35,60 +35,141 @@
   </collision>
 </link>
 
-<link name="Wheel_1_1">
+<!-- <link name="left_wheel_1">
   <inertial>
-    <origin xyz="-1.7552218505301198e-06 0.027427365846597315 1.782423703911018e-07" rpy="0 0 0"/>
-    <mass value="0.05590599422944014"/>
+    <origin xyz="1.0883713637710694e-08 -0.027427636695222635 -2.1769573927273744e-06" rpy="0 0 0"/>
+    <mass value="0.05590599421880941"/>
     <inertia ixx="3.2e-05" iyy="5e-05" izz="3.2e-05" ixy="-0.0" iyz="0.0" ixz="-0.0"/>
   </inertial>
   <visual>
-    <origin xyz="0.047514 -0.124767 0.077546" rpy="0 0 0"/>
+    <origin xyz="-0.0 0.1238 0.0" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find robot)/meshes/Wheel_1_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find robot)/meshes/left_wheel_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
-    <material name="silver"/>
+    <material name="rubber_soft"/>
   </visual>
   <collision>
-    <origin xyz="0.047514 -0.124767 0.077546" rpy="0 0 0"/>
+    <origin xyz="-0.0 0.1238 0.0" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find robot)/meshes/Wheel_1_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find robot)/meshes/left_wheel_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="Wheel_2_1">
+<link name="right_wheel_1">
   <inertial>
-    <origin xyz="-1.7552218502803196e-06 -0.02742790766788944 1.5656025187382738e-07" rpy="0 0 0"/>
-    <mass value="0.05590599422944014"/>
-    <inertia ixx="3.2e-05" iyy="5e-05" izz="3.2e-05" ixy="0.0" iyz="0.0" ixz="0.0"/>
+    <origin xyz="-1.0841058577942398e-08 0.02742763675724355 -2.176978833869531e-06" rpy="0 0 0"/>
+    <mass value="0.055905994229440134"/>
+    <inertia ixx="3.2e-05" iyy="5e-05" izz="3.2e-05" ixy="-0.0" iyz="-0.0" ixz="0.0"/>
   </inertial>
   <visual>
-    <origin xyz="0.047514 0.122833 0.077546" rpy="0 0 0"/>
+    <origin xyz="0.0 -0.1238 -0.0" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find robot)/meshes/Wheel_2_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find robot)/meshes/right_wheel_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
-    <material name="silver"/>
+    <material name="rubber_soft"/>
   </visual>
   <collision>
-    <origin xyz="0.047514 0.122833 0.077546" rpy="0 0 0"/>
+    <origin xyz="0.0 -0.1238 -0.0" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="file://$(find robot)/meshes/Wheel_2_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="file://$(find robot)/meshes/right_wheel_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
-</link>
+</link> -->
 
-<joint name="right_wheel_joint" type="continuous">
-  <origin xyz="-0.047514 0.124767 -0.077546" rpy="0 0 0"/>
+<!-- <joint name="left_wheel_joint" type="continuous">
+  <origin xyz="0.0 -0.1238 0.0" rpy="0 0 0"/>
   <parent link="base_link"/>
-  <child link="Wheel_1_1"/>
+  <child link="left_wheel"/>
+  <origin xyz="0 ${wheel_offset_y} 0" rpy="-${pi/2} 0 0" />
   <axis xyz="0.0 1.0 0.0"/>
 </joint>
 
-<joint name="left_wheel_joint" type="continuous">
-  <origin xyz="-0.047514 -0.122833 -0.077546" rpy="0 0 0"/>
+<joint name="right_wheel_joint" type="continuous">
+  <origin xyz="0.0 0.1238 0.0" rpy="0 0 0"/>
   <parent link="base_link"/>
-  <child link="Wheel_2_1"/>
+  <child link="right_wheel"/>
   <axis xyz="0.0 1.0 0.0"/>
+  <origin xyz="0 ${-wheel_offset_y} 0" rpy="${pi/2} 0 0" />
+</joint> -->
+
+<xacro:property name="wheel_radius" value="0.035"/>
+<xacro:property name="wheel_thickness" value="0.04"/>
+<xacro:property name="wheel_mass" value="12.0"/>
+<xacro:property name="wheel_offset_x" value="0.226"/>
+<xacro:property name="wheel_offset_y" value="0.155"/>
+<xacro:property name="wheel_offset_z" value="0.01"/>
+
+<link name="left_wheel">
+    <visual>
+        <geometry>
+            <cylinder radius="${wheel_radius}" length="${wheel_thickness}"/>
+        </geometry>
+        <material name="blue"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+    </visual>
+    <collision>
+        <geometry>
+            <sphere radius="${wheel_radius}"/>
+        </geometry>
+    </collision>
+    <xacro:inertial_cylinder mass="${wheel_mass}" length="${wheel_thickness}" radius="${wheel_radius}">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+    </xacro:inertial_cylinder>
+</link>
+
+<link name="right_wheel">
+    <visual>
+        <geometry>
+            <cylinder radius="${wheel_radius}" length="${wheel_thickness}"/>
+        </geometry>
+        <material name="blue"/>
+    </visual>
+    <collision>
+        <geometry>
+            <sphere radius="${wheel_radius}"/>
+        </geometry>
+    </collision>
+    <xacro:inertial_cylinder mass="${wheel_mass}" length="${wheel_thickness}" radius="${wheel_radius}">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+    </xacro:inertial_cylinder>
+</link>
+
+<link name="counter_weight">
+    <visual>
+        <geometry>
+            <box size="0.03 0.04 0.05"/>
+        </geometry>
+        <material name="blue"/>
+    </visual>
+    <collision>
+        <geometry>
+            <box size="0.03 0.04 0.05"/>
+        </geometry>
+    </collision>
+    <xacro:inertial_box mass="1.0" x="0.03" y="0.04" z="0.05">
+      <origin xyz="${0.03/2} 0 ${0.05/2}" rpy="0 0 0"/>
+    </xacro:inertial_box>
+</link>
+
+<joint name="left_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="left_wheel"/>
+    <origin xyz="0 ${wheel_offset_y} 0" rpy="-${pi/2} 0 0" />
+    <axis xyz="0 0 1"/>
+</joint>
+
+<joint name="right_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="right_wheel"/>
+    <origin xyz="0 ${-wheel_offset_y} 0" rpy="${pi/2} 0 0" />
+    <axis xyz="0 0 -1"/>
+</joint>
+
+<joint name="counter_joint" type="fixed">
+  <origin xyz="-0.17 0.0 0.071" rpy="0.0 0.0 0.0"/>
+  <parent link="base_link"/>
+  <child link="counter_weight"/>
 </joint>
 
 </robot>
