@@ -1,1 +1,0 @@
-/home/jermito/rina_ws/src/robot/launch/joystick.launch.py
