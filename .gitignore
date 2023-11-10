@@ -1,4 +1,5 @@
 /tut
+/.vscode
 *.pgm
 *.data
 *.posegraph
