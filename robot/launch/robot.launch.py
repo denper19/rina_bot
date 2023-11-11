@@ -76,5 +76,6 @@ def generate_launch_description():
         delayed_controller_manager,
         delayed_diff_drive_spawner,
         delayed_joint_broad_spawner,
-        joy_launc
+        # won't need on raspi, can launch from the computer directly
+        # joy_launch 
     ])

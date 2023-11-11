@@ -9,6 +9,8 @@
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
+  <depend>xacro</depend>
+  <depend>joystick</depend>
   <depend>ros2_control</depend>
   <depend>ros2_controllers</depend>
   <depend>gazebo_ros2_control</depend>
