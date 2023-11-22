@@ -56,8 +56,8 @@ def generate_launch_description():
                     )
 
     return LaunchDescription([
-        params_declare,
-        driver_node,
-        tf2_node,
+        # params_declare,
+        # driver_node,
+        # tf2_node,
         rviz2_node,
     ])
