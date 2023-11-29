@@ -153,6 +153,23 @@
     </xacro:inertial_box>
 </link>
 
+<link name="imu">
+    <!-- <visual>
+        <geometry>
+            <box size="0.03 0.04 0.05"/>
+        </geometry>
+        <material name="blue"/>
+    </visual> -->
+    <collision>
+        <geometry>
+            <box size="0.01 0.01 0.01"/>
+        </geometry>
+    </collision>
+    <xacro:inertial_box mass="1.0" x="0.01" y="0.01" z="0.01">
+      <origin xyz="${0.01/2} 0 ${0.01/2}" rpy="0 0 0"/>
+    </xacro:inertial_box>
+</link>
+
 <joint name="left_wheel_joint" type="continuous">
     <parent link="base_link"/>
     <child link="left_wheel"/>
@@ -171,6 +188,11 @@
   <origin xyz="-0.17 0.0 0.071" rpy="0.0 0.0 0.0"/>
   <parent link="base_link"/>
   <child link="counter_weight"/>
+</joint>
+
+<joint name="imu_link" type="fixed">
+  <parent link="counter_weight"/>
+  <child link="imu"/>
 </joint>
 
 </robot>

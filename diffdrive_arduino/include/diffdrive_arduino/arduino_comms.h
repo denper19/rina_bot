@@ -4,6 +4,19 @@
 #include <serial/serial.h>
 #include <cstring>
 
+typedef struct ImuValues
+{
+  double orientation_x;
+  double orientation_y;
+  double orientation_z;
+  double angular_velocity_x;
+  double angular_velocity_y;
+  double angular_velocity_z;
+  double linear_acceleration_x;
+  double linear_acceleration_y;
+  double linear_acceleration_z;
+} ImuValues;
+
 class ArduinoComms
 {
 
@@ -20,6 +33,7 @@ public:
   void setup(const std::string &serial_device, int32_t baud_rate, int32_t timeout_ms);
   void sendEmptyMsg();
   void readEncoderValues(int &val_1, int &val_2);
+  void readImuValues(ImuValues& data);
   void setMotorValues(int val_1, int val_2);
   void setPidValues(float k_p, float k_d, float k_i, float k_o);
 

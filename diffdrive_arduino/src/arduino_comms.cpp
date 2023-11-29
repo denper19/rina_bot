@@ -35,6 +35,28 @@ void ArduinoComms::readEncoderValues(int &val_1, int &val_2)
     val_2 = std::atoi(token_2.c_str());
 }
 
+void ArduinoComms::readImuValues(ImuValues& data)
+{
+    std::string response = sendMsg("i\r");
+
+    std::string delimiter = " ";
+    size_t del_pos = response.find(delimiter);
+    std::string token_1 = response.substr(0, del_pos);
+    std::string token_2 = response.substr(del_pos + delimiter.length());
+
+    data.orientation_x = 0.8;
+    data.orientation_y = 0.8;
+    data.orientation_z = 0.8;
+    data.angular_velocity_x = 0.6;
+    data.angular_velocity_y = 0.6;
+    data.angular_velocity_z = 0.6;
+    data.linear_acceleration_x = 0.4;
+    data.linear_acceleration_y = 0.4;
+    data.linear_acceleration_z = 0.4;
+
+}
+
+
 void ArduinoComms::setMotorValues(int val_1, int val_2)
 {
     std::stringstream ss;

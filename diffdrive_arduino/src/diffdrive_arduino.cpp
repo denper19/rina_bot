@@ -31,7 +31,8 @@ return_type DiffDriveArduino::configure(const hardware_interface::HardwareInfo &
   cfg_.baud_rate = std::stoi(info_.hardware_parameters["baud_rate"]);
   cfg_.timeout = std::stoi(info_.hardware_parameters["timeout"]);
   cfg_.enc_counts_per_rev = std::stoi(info_.hardware_parameters["enc_counts_per_rev"]);
-
+  hw_sensor_states_.resize(
+    info_.sensors[0].state_interfaces.size(), std::numeric_limits<double>::quiet_NaN());
   // Set up the wheels
   l_wheel_.setup(cfg_.left_wheel_name, cfg_.enc_counts_per_rev);
   r_wheel_.setup(cfg_.right_wheel_name, cfg_.enc_counts_per_rev);
@@ -55,6 +56,11 @@ std::vector<hardware_interface::StateInterface> DiffDriveArduino::export_state_i
   state_interfaces.emplace_back(hardware_interface::StateInterface(l_wheel_.name, hardware_interface::HW_IF_POSITION, &l_wheel_.pos));
   state_interfaces.emplace_back(hardware_interface::StateInterface(r_wheel_.name, hardware_interface::HW_IF_VELOCITY, &r_wheel_.vel));
   state_interfaces.emplace_back(hardware_interface::StateInterface(r_wheel_.name, hardware_interface::HW_IF_POSITION, &r_wheel_.pos));
+  for (uint i = 0; i < info_.sensors[0].state_interfaces.size(); i++)
+  {
+    state_interfaces.emplace_back(hardware_interface::StateInterface(
+      info_.sensors[0].name, info_.sensors[0].state_interfaces[i].name, &hw_sensor_states_[i]));
+  }
 
   return state_interfaces;
 }
@@ -111,7 +117,10 @@ hardware_interface::return_type DiffDriveArduino::read()
     return return_type::ERROR;
   }
 
+  ImuValues data;
+
   arduino_.readEncoderValues(l_wheel_.enc, r_wheel_.enc);
+  arduino_.readImuValues(data);
 
   double pos_prev = l_wheel_.pos;
   l_wheel_.pos = l_wheel_.calcEncAngle();
@@ -121,7 +130,15 @@ hardware_interface::return_type DiffDriveArduino::read()
   r_wheel_.pos = r_wheel_.calcEncAngle();
   r_wheel_.vel = (r_wheel_.pos - pos_prev) / deltaSeconds;
 
-
+  hw_sensor_states_[0] = data.orientation_x;
+  hw_sensor_states_[1] = data.orientation_y;
+  hw_sensor_states_[2] = data.orientation_z;
+  hw_sensor_states_[3] = data.angular_velocity_x;
+  hw_sensor_states_[4] = data.angular_velocity_y;
+  hw_sensor_states_[5] = data.angular_velocity_z;
+  hw_sensor_states_[6] = data.linear_acceleration_x;
+  hw_sensor_states_[7] = data.linear_acceleration_y;
+  hw_sensor_states_[8] = data.linear_acceleration_z;
 
   return return_type::OK;
 

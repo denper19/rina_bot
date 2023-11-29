@@ -48,6 +48,8 @@ private:
 
   Wheel l_wheel_;
   Wheel r_wheel_;
+  
+  std::vector<double> hw_sensor_states_;
 
   rclcpp::Logger logger_;
 
