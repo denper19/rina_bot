@@ -1,5 +1,22 @@
 How to run navigation
 
+Connections
+
+| Pins  | Arduino |
+| ------------- | ------------- |
+| Left Motor IN1  | Content Cell  |
+| Left Motor IN2  | Content Cell  |
+| Right Motor IN1  | Content Cell  |
+| Right Motor IN2  | Content Cell  |
+| Left Motor ENCA  | Content Cell  |
+| Left Motor ENCB  | Content Cell  |
+| Right Motor ENCA  | Content Cell  |
+| Right Motor ENCB  | Content Cell  |
+| Left Motor PWR/EN  | Content Cell  |
+| Right Motor PWR/EN  | Content Cell  |
+
+Run Navigation From Scratch:
+
 simulation:
 
 1. ros2 launch robot gazebo.launch.py
