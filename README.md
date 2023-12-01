@@ -15,34 +15,29 @@ Connections
 | Left Motor PWR/EN  | Content Cell  |
 | Right Motor PWR/EN  | Content Cell  |
 
-Run Navigation From Scratch:
+Package Setup:
 
-simulation:
+1. First git clone the package into your workspace, with `git clone https://github.com/denper19/rina_bot.git`
+2. Now do `rosdep init && rosdep update --include-eol-distros`
+3. Then install dependencies with `rosdep install --from-path src --ignore-src -r -y`
+4. Build the package with `colcon build --symlink-install`
+   1. If running on the ***raspberry pi*** then run `colcon build --symlink-install --executor sequential`
 
-1. ros2 launch robot gazebo.launch.py
+Running the package:
 
-2. ros2 launch slam_toolbox online_async_launch.py params_file:=./src/robot/config
-mapper_params_online_async.yaml use_sim_time:=true
-
-3. ros2 run nav2_map_server map_server --ros-args -p yaml_filename:=new_map_save.yaml -p  use_sim_time:=true
-
-4. ros2 run nav2_util lifecycle_bringup map_server
-
-5. ros2 run nav2_amcl amcl --ros-args -p use_sim_time:=true
-
-6. ros2 run nav2_util lifecycle_bringup amcl
-
-real:
-
-1. ros2 launch robot robot.launch.py
-
-2. ros2 launch slam_toolbox online_async_launch.py params_file:=./src/robot/config
-mapper_params_online_async.yaml use_sim_time:=false
-
-3. ros2 run nav2_map_server map_server --ros-args -p yaml_filename:=new_map_save.yaml -p  use_sim_time:=false
-
-4. ros2 run nav2_util lifecycle_bringup map_server
-
-5. ros2 run nav2_amcl amcl --ros-args -p use_sim_time:=false
-
-6. ros2 run nav2_util lifecycle_bringup amcl
+1. ***Whenever you open a new cmd tab, make sure to source the package with `source install/local_setup.bash`***
+2. If running in simulation, then run `ros2 launch robot gazebo.launch.py`
+   1. If running on real robot then ssh into the raspberry pi (assuming you have cloned, built and sourced the package) then run `ros2 launch robot robot.launch.py`
+   2. In a new tab on the raspberry pi, to start the YDLidar, run `ros2 launch ydlidar_ros2_driver ydlidar_launch.py`
+   3. All subsequent steps after this are to be executed on your laptor that is connected to the same wifi as the raspberry pi
+4. Next, if you have a bluetooth controller, then connect it to your laptop and run `ros2 launch robot joystick.launch.py` in a new tab.
+   1. If you don't, then run `ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/cmd_vel_joy`
+5. Now run twist mux to merge the cmd velocity topics
+6. Run slma toolbox with `ros2 launch slam_toolbox online_async_launch.py params_file:=./src/robot/config/mapper_params_online_async.yaml use_sim_time:=true` (if running on real bot, set `use_sim_time:=false`)
+   1. When running slam toolbox, set the world to the `map` frame
+   2. Make sure to add the SlamToolBox panel in RVIZ, and add the map display plugin
+   3. Drive the robot around in the world until you are satisfied with the map created
+   4. Save the map by typing a name into the `save map` and `serialize map` box and clicking their respective buttons.
+   5. Once done, you can `CTRL-C` out of the cmd line.
+7. Now run localization
+8. Finally, you can run navigation.
