@@ -1,4 +1,8 @@
-How to run navigation
+Sources/References/Helpful links
+1. [The Construct Sim](https://www.youtube.com/results?sp=mAEB&search_query=the+construct+sim)
+2. ros_arduino_bridge
+3. 
+
 
 Connections
 
