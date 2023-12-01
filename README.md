@@ -7,6 +7,7 @@
 - [ ] Port to Humble
 - [ ] IMU interface
 - [ ] IMU URDF simulation
+- [ ] EKF for fusion
 - [ ] Add Dockers
 
 ### Connections
