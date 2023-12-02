@@ -1,0 +1,9 @@
+<library path="mpu6050_interface">
+  <class name="mpu6050_interface/MPU6050Interface"
+         type="mpu6050_interface::MPU6050Interface"
+         base_class_type="hardware_interface::SensorInterface">
+    <description>
+      The ros2_control DiffBot example using a system hardware interface-type. It uses velocity command and position state interface. The example is the starting point to implement a hardware interface for differential-drive mobile robots.
+    </description>
+  </class>
+</library>

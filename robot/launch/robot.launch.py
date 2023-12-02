@@ -38,15 +38,27 @@ def generate_launch_description():
 
     diff_drive_spawner = Node(
         package="controller_manager",
-        executable="spawner.py",
+        executable="spawner",
         arguments=["diff_cont"],
     )
 
     joint_broad_spawner = Node(
         package="controller_manager",
-        executable="spawner.py",
+        executable="spawner",
         arguments=["joint_broad"],
     )
+
+    start_imu_broadcaster_cmd = Node(
+        # condition=IfCondition(use_ros2_control),
+        package='controller_manager',
+        executable='spawner',
+        arguments=['imu_broadcaster'])
+
+    # Delayed imu_broadcaster_spawner action
+    start_delayed_imu_broadcaster_spawner = RegisterEventHandler(
+        event_handler=OnProcessStart(
+            target_action=controller_manager,
+            on_start=[start_imu_broadcaster_cmd]))
 
     delayed_controller_manager = TimerAction(period=3.0, actions=[controller_manager])
 
@@ -76,6 +88,7 @@ def generate_launch_description():
         delayed_controller_manager,
         delayed_diff_drive_spawner,
         delayed_joint_broad_spawner,
+        start_delayed_imu_broadcaster_spawner
         # won't need on raspi, can launch from the computer directly
         # joy_launch 
     ])
