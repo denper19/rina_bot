@@ -1,7 +1,8 @@
-### Sources/References/Helpful links
+### References
 1. [The Construct Sim](https://www.youtube.com/results?sp=mAEB&search_query=the+construct+sim)
-2. [HBRobotics/ros_arduino_bridge](https://github.com/hbrobotics/ros_arduino_bridge)
-3. 
+2. [HBRobotics](https://github.com/hbrobotics/ros_arduino_bridge)
+3. [LidarBot](https://github.com/TheNoobInventor/lidarbot)
+4. [JoshNewans](https://github.com/joshnewans/articubot_one)
 
 ### Progress:
 - [ ] Port to Humble
