@@ -29,6 +29,22 @@
 #include "hardware_interface/types/hardware_interface_return_values.hpp"
 #include "rclcpp/macros.hpp"
 #include "visibility_control_imu.h"
+#include "arduino_comms.hpp"
+
+typedef struct Quaternion
+{
+  double qx;
+  double qy;
+  double qz;
+  double qw;
+} Quaternion;
+
+struct Config
+{
+  std::string device = "";
+  int baud_rate = 0;
+  int timeout_ms = 0;
+};
 
 namespace mpu6050_interface
 {
@@ -56,11 +72,28 @@ public:
   hardware_interface::return_type read(
     const rclcpp::Time & time, const rclcpp::Duration & period) override;
 
+  MPU6050_ARDUINO_PUBLIC
+  void euler_to_quat();
+
 private:
-  // Parameters for the RRBot simulation
-  double hw_start_sec_;
-  double hw_stop_sec_;
-  double hw_sensor_change_;
+
+  ArduinoComms comms;
+  Config cfg;
+
+  Quaternion orientation;
+
+  double linear_accel_x;
+  double linear_accel_y;
+  double linear_accel_z;
+
+  double angular_vel_x;
+  double angular_vel_y;
+  double angular_vel_z;
+
+  float quaternion[4];
+  float gyro_values[3];
+  float accel_values[3];
+
 
   // Store the sensor states for the simulated robot
   std::vector<double> hw_sensor_states_;
