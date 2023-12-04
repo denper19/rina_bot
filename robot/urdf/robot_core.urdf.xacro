@@ -8,6 +8,7 @@
     <xacro:include filename="$(find robot)/urdf/robot.urdf.xacro" />
     <xacro:include filename="$(find robot)/urdf/sensors/lidar.xacro" />
     <xacro:include filename="$(find robot)/urdf/sensors/camera.xacro" />
+    <xacro:include filename="$(find robot)/urdf/sensors/imu.xacro" />
     
     <xacro:if value="$(arg use_ros2_control)">
         <xacro:include filename="$(find robot)/urdf/control/ros2_control.xacro" />
