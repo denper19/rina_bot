@@ -13,6 +13,7 @@
   <depend>twist_mux</depend>
   <depend>joystick</depend>
   <depend>ros2_control</depend>
+  <depend>imu_tools</depend>
   <depend>ros2_controllers</depend>
   <depend>gazebo_ros2_control</depend>
 

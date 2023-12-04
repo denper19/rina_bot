@@ -136,6 +136,24 @@
 </link>
 
 <!-- counter weight is invisible -->
+<link name="imu_link">
+    <!-- <visual>
+        <geometry>
+            <box size="0.03 0.04 0.05"/>
+        </geometry>
+        <material name="blue"/>
+    </visual> -->
+    <collision>
+        <geometry>
+            <box size="0.01 0.01 0.01"/>
+        </geometry>
+    </collision>
+    <xacro:inertial_box mass="1.0" x="0.01" y="0.01" z="0.01">
+      <origin xyz="${0.01/2} 0 ${0.01/2}" rpy="0 0 0"/>
+    </xacro:inertial_box>
+</link>
+
+<!-- counter weight is invisible -->
 <link name="counter_weight">
     <!-- <visual>
         <geometry>
@@ -171,6 +189,12 @@
   <origin xyz="-0.17 0.0 0.071" rpy="0.0 0.0 0.0"/>
   <parent link="base_link"/>
   <child link="counter_weight"/>
+</joint>
+
+<joint name="imu_joint" type="fixed">
+  <origin xyz="-0.17 0.0 0.071" rpy="0.0 0.0 0.0"/>
+  <parent link="counter_weight"/>
+  <child link="imu_link"/>
 </joint>
 
 </robot>

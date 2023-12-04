@@ -6,7 +6,7 @@
 
 ### Progress:
 - [ ] Port to Humble
-- [ ] IMU interface
+- [x] IMU interface
 - [ ] IMU URDF simulation
 - [ ] EKF for fusion
 - [ ] Add Dockers
