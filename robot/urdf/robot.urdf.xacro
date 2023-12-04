@@ -173,11 +173,5 @@
   <child link="counter_weight"/>
 </joint>
 
-<joint name="imu_joint" type="fixed">
-  <origin xyz="-0.17 0.0 0.071" rpy="0.0 0.0 0.0"/>
-  <parent link="counter_weight"/>
-  <child link="imu_link"/>
-</joint>
-
 </robot>
  

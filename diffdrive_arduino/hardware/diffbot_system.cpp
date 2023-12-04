@@ -235,6 +235,7 @@ hardware_interface::return_type DiffDriveArduinoHardware::read(
 
   int tempx, tempy, tempz, tempgx, tempgy, tempgz;
   comms_.read_imu(q.x, q.y, q.z, q.w, tempx, tempy, tempz, tempgx, tempgy, tempgz);
+  
   ax = tempx / 16384.0;
   ay = tempy / 16384.0;
   az = tempz / 16384.0;
