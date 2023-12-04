@@ -6,6 +6,7 @@
 
 ### Progress:
 - [ ] Port to Humble
+- [ ] Simplify/Reduce Steps
 - [x] IMU interface
 - [ ] IMU URDF simulation
 - [ ] EKF for fusion
