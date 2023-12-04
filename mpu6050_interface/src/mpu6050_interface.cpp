@@ -23,8 +23,8 @@ hardware_interface::CallbackReturn MPU6050Interface::on_init(
   RCLCPP_INFO(rclcpp::get_logger("MPU6050Interface"), "Initializing...");
 
   cfg.device = info_.hardware_parameters["device"];
-  cfg.baud_rate = std::stoi(info_.hardware_parameters["baud_rate"]);
-  cfg.timeout_ms = std::stoi(info_.hardware_parameters["timeout_ms"]);
+  cfg.baud_rate = 57600;
+  cfg.timeout_ms = 100;
 
 	RCLCPP_INFO(rclcpp::get_logger("MPU6050Interface"), "Finished initialization");
 
@@ -45,7 +45,7 @@ MPU6050Interface::export_state_interfaces()
 	state_interfaces.emplace_back(hardware_interface::StateInterface(info_.sensors[0].name, info_.sensors[0].state_interfaces[6].name, &angular_vel_z));
 	state_interfaces.emplace_back(hardware_interface::StateInterface(info_.sensors[0].name, info_.sensors[0].state_interfaces[7].name, &linear_accel_x));
 	state_interfaces.emplace_back(hardware_interface::StateInterface(info_.sensors[0].name, info_.sensors[0].state_interfaces[8].name, &linear_accel_y));
-	state_interfaces.emplace_back(hardware_interface::StateInterface(info_.sensors[0].name, info_.sensors[0].state_interfaces[8].name, &linear_accel_z));
+	state_interfaces.emplace_back(hardware_interface::StateInterface(info_.sensors[0].name, info_.sensors[0].state_interfaces[9].name, &linear_accel_z));
 
 
 
@@ -56,10 +56,10 @@ hardware_interface::CallbackReturn MPU6050Interface::on_activate(
   const rclcpp_lifecycle::State & /*previous_state*/)
 {
 
-  if (comms.connected())
-  {
-    comms.disconnect();
-  }
+  // if (comms.connected())
+  // {
+  //   comms.disconnect();
+  // }
 
   comms.connect(cfg.device, cfg.baud_rate, cfg.timeout_ms);
 
@@ -71,11 +71,13 @@ hardware_interface::CallbackReturn MPU6050Interface::on_activate(
 hardware_interface::CallbackReturn MPU6050Interface::on_deactivate(
   const rclcpp_lifecycle::State & /*previous_state*/)
 {
+  // if (comms.connected())
+  // {
+  //   comms.disconnect();
+  // }
 
-  if (comms.connected())
-  {
-    comms.disconnect();
-  }
+  comms.disconnect();
+
 
   RCLCPP_INFO(rclcpp::get_logger("MPU6050Interface"), "Successfully deactivated!");
 

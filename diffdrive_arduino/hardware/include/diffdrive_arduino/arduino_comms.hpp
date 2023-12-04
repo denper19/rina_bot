@@ -96,6 +96,37 @@ public:
     val_1 = std::atoi(token_1.c_str());
     val_2 = std::atoi(token_2.c_str());
   }
+
+  void read_imu(double& qx, double& qy, double& qz, double& qw, int& ax, int& ay, int& az, int& gx, int& gy, int& gz)
+  {
+    std::string response = send_msg("i\r");
+    std::string delimiter = " ";
+    size_t start_pos = 0;
+
+    for (int i = 0; i < 9; ++i) {
+        size_t del_pos = response.find(delimiter, start_pos);
+
+        // Assign each value directly to its respective variable
+        switch (i) {
+            case 0: qx = std::stod(response.substr(start_pos, del_pos - start_pos).c_str()); break;
+            case 1: qy = std::stod(response.substr(start_pos, del_pos - start_pos).c_str()); break;
+            case 2: qz = std::stod(response.substr(start_pos, del_pos - start_pos).c_str()); break;
+            case 3: qw = std::stod(response.substr(start_pos, del_pos - start_pos).c_str()); break;
+            case 4: ax = std::stoi(response.substr(start_pos, del_pos - start_pos).c_str()); break;
+            case 5: ay = std::stoi(response.substr(start_pos, del_pos - start_pos).c_str()); break;
+            case 6: az = std::stoi(response.substr(start_pos, del_pos - start_pos).c_str()); break;
+            case 7: gx = std::stoi(response.substr(start_pos, del_pos - start_pos).c_str()); break;
+            case 8: gy = std::stoi(response.substr(start_pos, del_pos - start_pos).c_str()); break;
+        }
+
+        start_pos = del_pos + delimiter.length();
+    }
+
+    // Extract the last value
+    gz = std::atoi(response.substr(start_pos).c_str());
+
+  }
+
   void set_motor_values(int val_1, int val_2)
   {
     std::stringstream ss;

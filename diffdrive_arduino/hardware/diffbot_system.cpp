@@ -126,6 +126,17 @@ std::vector<hardware_interface::StateInterface> DiffDriveArduinoHardware::export
   state_interfaces.emplace_back(hardware_interface::StateInterface(
     wheel_r_.name, hardware_interface::HW_IF_VELOCITY, &wheel_r_.vel));
 
+  state_interfaces.emplace_back(hardware_interface::StateInterface(info_.sensors[0].name, info_.sensors[0].state_interfaces[0].name, &q.x));
+	state_interfaces.emplace_back(hardware_interface::StateInterface(info_.sensors[0].name, info_.sensors[0].state_interfaces[1].name, &q.y));
+	state_interfaces.emplace_back(hardware_interface::StateInterface(info_.sensors[0].name, info_.sensors[0].state_interfaces[2].name, &q.z));
+	state_interfaces.emplace_back(hardware_interface::StateInterface(info_.sensors[0].name, info_.sensors[0].state_interfaces[3].name, &q.w));
+	state_interfaces.emplace_back(hardware_interface::StateInterface(info_.sensors[0].name, info_.sensors[0].state_interfaces[4].name, &gx));
+	state_interfaces.emplace_back(hardware_interface::StateInterface(info_.sensors[0].name, info_.sensors[0].state_interfaces[5].name, &gy));
+	state_interfaces.emplace_back(hardware_interface::StateInterface(info_.sensors[0].name, info_.sensors[0].state_interfaces[6].name, &gz));
+	state_interfaces.emplace_back(hardware_interface::StateInterface(info_.sensors[0].name, info_.sensors[0].state_interfaces[7].name, &ax));
+	state_interfaces.emplace_back(hardware_interface::StateInterface(info_.sensors[0].name, info_.sensors[0].state_interfaces[8].name, &ay));
+	state_interfaces.emplace_back(hardware_interface::StateInterface(info_.sensors[0].name, info_.sensors[0].state_interfaces[9].name, &az));
+
   return state_interfaces;
 }
 
@@ -196,6 +207,22 @@ hardware_interface::CallbackReturn DiffDriveArduinoHardware::on_deactivate(
   return hardware_interface::CallbackReturn::SUCCESS;
 }
 
+void DiffDriveArduinoHardware::euler_to_quat()
+{
+  float cr = cos(roll * 0.5);
+	float sr = sin(roll * 0.5);
+	float cp = cos(pitch * 0.5);
+	float sp = sin(pitch * 0.5);
+	float cy = cos(yaw * 0.5);
+	float sy = sin(yaw * 0.5);
+
+	q.x = sr * cp * cy - cr * sp * sy; 
+	q.y = cr * sp * cy + sr * cp * sy; 
+	q.z = cr * cp * sy - sr * sp * cy;
+	q.w = cr * cp * cy + sr * sp * sy; 
+
+}
+
 hardware_interface::return_type DiffDriveArduinoHardware::read(
   const rclcpp::Time & /*time*/, const rclcpp::Duration & period)
 {
@@ -205,6 +232,15 @@ hardware_interface::return_type DiffDriveArduinoHardware::read(
   }
 
   comms_.read_encoder_values(wheel_l_.enc, wheel_r_.enc);
+
+  int tempx, tempy, tempz, tempgx, tempgy, tempgz;
+  comms_.read_imu(q.x, q.y, q.z, q.w, tempx, tempy, tempz, tempgx, tempgy, tempgz);
+  ax = tempx / 16384.0;
+  ay = tempy / 16384.0;
+  az = tempz / 16384.0;
+  gx = tempgx / 131.0;
+  gy = tempgy / 131.0;
+  gz = tempgz / 131.0;
 
   double delta_seconds = period.seconds();
 
