@@ -233,15 +233,26 @@ hardware_interface::return_type DiffDriveArduinoHardware::read(
 
   comms_.read_encoder_values(wheel_l_.enc, wheel_r_.enc);
 
-  int tempx, tempy, tempz, tempgx, tempgy, tempgz;
-  comms_.read_imu(q.x, q.y, q.z, q.w, tempx, tempy, tempz, tempgx, tempgy, tempgz);
+  int16_t tqx, tqy, tqz, tqw, tax, tay, taz, tgx, tgy, tgz;
+
+  int status = comms_.read_imu_data(&tqx, &tqy, &tqz, &tqw, &tax, &tay, &taz, &tgx, &tgy, &tgz);
+#ifdef _DEBUG_
+  if(status < 0)
+  {
+    RCLCPP_ERROR(rclcpp::get_logger("DiffDriveArduinoHardware"), "IMU timed out. Setting all IMU values to 0.");
+  }
+#endif
   
-  ax = tempx / 16384.0;
-  ay = tempy / 16384.0;
-  az = tempz / 16384.0;
-  gx = tempgx / 131.0;
-  gy = tempgy / 131.0;
-  gz = tempgz / 131.0;
+  q.x = tqx / 100.0f;
+  q.y = tqy / 100.0f;
+  q.z = tqz / 100.0f;
+  q.w = tqw / 100.0f;
+  ax = tax / 16384.0;
+  ay = tay / 16384.0;
+  az = taz / 16384.0;
+  gx = tgx / 131.0;
+  gy = tgy / 131.0;
+  gz = tgz / 131.0;
 
   double delta_seconds = period.seconds();
 

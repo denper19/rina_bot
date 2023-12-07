@@ -18,6 +18,7 @@
 #include <memory>
 #include <string>
 #include <vector>
+#include <cstring>
 
 #include "hardware_interface/handle.hpp"
 #include "hardware_interface/hardware_info.hpp"
@@ -34,7 +35,8 @@
 #include "diffdrive_arduino/arduino_comms.hpp"
 #include "diffdrive_arduino/wheel.hpp"
 
-
+#define _DEBUG_
+// #undef _DEBUG_
 namespace diffdrive_arduino
 {
 
@@ -86,7 +88,6 @@ public:
   hardware_interface::CallbackReturn on_cleanup(
     const rclcpp_lifecycle::State & previous_state) override;
 
-
   DIFFDRIVE_ARDUINO_PUBLIC
   hardware_interface::CallbackReturn on_activate(
     const rclcpp_lifecycle::State & previous_state) override;
@@ -115,6 +116,7 @@ private:
   double roll, pitch, yaw;
   double ax, ay, az;
   double gx, gy, gz;
+  // int16_t tqx, tqy, tqz, tqw, tax, tay, taz, tgz, tgy, tgz;
   Quaternion q;
 };
 

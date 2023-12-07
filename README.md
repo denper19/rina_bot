@@ -11,6 +11,7 @@
 - [x] IMU interface
 - [ ] IMU URDF simulation
 - [ ] EKF for fusion
+- [ ] Look into ESP32 Camera
 - [ ] Add Dockers
 
 ### Connections
