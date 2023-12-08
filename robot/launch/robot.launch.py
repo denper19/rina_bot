@@ -79,8 +79,14 @@ def generate_launch_description():
     joy_launch = IncludeLaunchDescription(
                 PythonLaunchDescriptionSource([os.path.join(
                     get_package_share_directory(package_name),'launch','joystick.launch.py'
-                )])
+                )]), launch_arguments={'use_sim_time':'false'}.items()
     )
+
+    ekf_real = IncludeLaunchDescription(
+                PythonLaunchDescriptionSource([os.path.join(
+                    get_package_share_directory('robot'), 'launch', 'ekf.launch.py')]),
+                    launch_arguments={'use_sim_time': 'false'}.items()
+             )
 
     # Launch them all!
     return LaunchDescription([
@@ -88,7 +94,8 @@ def generate_launch_description():
         delayed_controller_manager,
         delayed_diff_drive_spawner,
         delayed_joint_broad_spawner,
-        start_delayed_imu_broadcaster_spawner
+        start_delayed_imu_broadcaster_spawner,
         # won't need on raspi, can launch from the computer directly
-        # joy_launch 
+        joy_launch,
+        ekf_real,
     ])

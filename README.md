@@ -6,11 +6,12 @@
 
 ### Progress:
 - [ ] Port to Humble
-- [ ] Simplify/Reduce Steps
-- [ ] Make IMU reads faster
+- [x] Simplify/Reduce Steps
+- [x] Make IMU reads faster
 - [x] IMU interface
-- [ ] IMU URDF simulation
-- [ ] EKF for fusion
+- [x] IMU URDF simulation
+- [x] EKF for IMU + Odom fusion
+- [x] Add GPS
 - [ ] Look into ESP32 Camera
 - [ ] Add Dockers
 
