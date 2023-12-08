@@ -17,7 +17,10 @@ def generate_launch_description():
 
     package_name='robot' #<--- CHANGE ME
 
-    world = os.path.join(get_package_share_directory(package_name), 'config', 'gazebo_world.sdf')
+    world = os.path.join(get_package_share_directory(package_name), 'world', 'sample.world')
+
+    gazebo_models_path = os.path.join(get_package_share_directory(package_name), 'models')
+    os.environ["GAZEBO_MODEL_PATH"] = gazebo_models_path
 
     rsp = IncludeLaunchDescription(
                 PythonLaunchDescriptionSource([os.path.join(
@@ -31,7 +34,7 @@ def generate_launch_description():
     gazebo = IncludeLaunchDescription(
                 PythonLaunchDescriptionSource([os.path.join(
                     get_package_share_directory('gazebo_ros'), 'launch', 'gazebo.launch.py')]),
-                    launch_arguments={'extra_gazebo_args': '--ros-args --params-file ' + gazebo_params_file}.items()
+                    launch_arguments={'verbose': 'true', 'world': world}.items()
              )
 
     # gazebo = IncludeLaunchDescription(
@@ -40,10 +43,16 @@ def generate_launch_description():
     #                 launch_arguments={'world': '/home/jermito/rina_ws/src/rina_bot/robot/config/gazebo_world.world'}.items())
 
     # Run the spawner node from the gazebo_ros package. The entity name doesn't really matter if you only have a single robot.
-    spawn_entity = Node(package='gazebo_ros', executable='spawn_entity.py',
-                        arguments=['-topic', 'robot_description',
-                                   '-entity', 'my_bot', '-z', '0.1'],
-                        output='screen')
+    spawn_entity = Node(
+    package='gazebo_ros', 
+    executable='spawn_entity.py',
+    arguments=['-entity', 'my_bot', 
+                '-topic', 'robot_description',
+                    '-x', '0',
+                    '-y', '0',
+                    '-z', '0.1',
+                    '-Y', '0'],
+                    output='screen')
 
 
     diff_drive_spawner = Node(

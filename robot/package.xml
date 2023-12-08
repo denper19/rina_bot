@@ -10,6 +10,7 @@
   <buildtool_depend>ament_cmake</buildtool_depend>
 
   <depend>xacro</depend>
+  <depend>gazebo_ros_pkgs</depend>
   <depend>twist_mux</depend>
   <depend>joystick</depend>
   <depend>ros2_control</depend>

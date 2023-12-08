@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <robot name="ros" xmlns:xacro="http://www.ros.org/wiki/xacro" >
 
-<xacro:property name="body_color" value="Gazebo/Silver" />
+<xacro:property name="body_color" value="Gazebo/Grey" />
 
 <gazebo reference="base_link">
   <material>${body_color}</material>
