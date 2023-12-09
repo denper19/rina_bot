@@ -5,7 +5,7 @@
 4. [JoshNewans](https://github.com/joshnewans/articubot_one)
 
 ### Progress:
-- [ ] Port to Humble
+- [x] Port to Humble
 - [x] Simplify/Reduce Steps
 - [x] Make IMU reads faster
 - [x] IMU interface
