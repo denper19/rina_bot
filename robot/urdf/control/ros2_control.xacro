@@ -2,7 +2,7 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
     <xacro:unless value="$(arg sim_mode)">
-        <ros2_control name="RealRobot" type="system">
+        <!-- <ros2_control name="RealRobot" type="system">
             <hardware>
                 <plugin>diffdrive_arduino/DiffDriveArduinoHardware</plugin>
                 <param name="left_wheel_name">left_wheel_joint</param>
@@ -39,9 +39,9 @@
                 <state_interface name='linear_acceleration.y'/>
                 <state_interface name='linear_acceleration.z'/>  
             </sensor>
-        </ros2_control>
+        </ros2_control> -->
          <!-- MPU6050 sensor--> 
-        <!-- <ros2_control name='MPU6050' type='sensor'>
+        <ros2_control name='MPU6050' type='sensor'>
             <hardware>
                 <plugin>mpu6050_interface/MPU6050Interface</plugin>
                 <param name="device">/dev/ttyUSB0</param>
@@ -60,7 +60,7 @@
                 <state_interface name='linear_acceleration.y'/>
                 <state_interface name='linear_acceleration.z'/>  
             </sensor>
-        </ros2_control> -->
+        </ros2_control>
     </xacro:unless>
 
 

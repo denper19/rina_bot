@@ -33,10 +33,10 @@
 
 typedef struct Quaternion
 {
-  double qx;
-  double qy;
-  double qz;
-  double qw;
+  double x;
+  double y;
+  double z;
+  double w;
 } Quaternion;
 
 struct Config
@@ -80,19 +80,12 @@ private:
   ArduinoComms comms;
   Config cfg;
 
-  Quaternion orientation;
-
-  double linear_accel_x;
-  double linear_accel_y;
-  double linear_accel_z;
-
-  double angular_vel_x;
-  double angular_vel_y;
-  double angular_vel_z;
-
-  float quaternion[4];
-  float gyro_values[3];
-  float accel_values[3];
+  double roll, pitch, yaw;
+  double ax, ay, az;
+  double gx, gy, gz;
+  // temporary variables for storing imu calculation data
+  int16_t tqx, tqy, tqz, tqw, tax, tay, taz, tgx, tgy, tgz;
+  Quaternion q;
 
 
   // Store the sensor states for the simulated robot

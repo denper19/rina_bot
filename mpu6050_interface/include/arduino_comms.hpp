@@ -1,12 +1,11 @@
 #ifndef DIFFDRIVE_ARDUINO_ARDUINO_COMMS_HPP
 #define DIFFDRIVE_ARDUINO_ARDUINO_COMMS_HPP
 
-// #include <cstring>
+#include <cstring>
 #include <sstream>
-// #include <cstdlib>
+#include <cstdio>
 #include <libserial/SerialPort.h>
 #include <iostream>
-
 
 LibSerial::BaudRate convert_baud_rate(int baud_rate)
 {
@@ -53,6 +52,46 @@ public:
     return serial_conn_.IsOpen();
   }
 
+  int read_imu_data(int16_t* qx, int16_t* qy, int16_t* qz, int16_t* qw, int16_t* ax, int16_t* ay, int16_t* az, int16_t* gx, int16_t* gy, int16_t* gz)
+  {
+    serial_conn_.FlushIOBuffers(); // Just in case
+    serial_conn_.Write("i\r");
+    try
+    {
+      for(int i = 0; i < 21; i++)
+      {
+        serial_conn_.ReadByte(imu_data[i], 1000);
+      }
+      status = 1;
+    }
+    catch(const LibSerial::ReadTimeout&)
+    {
+      *qx = 0;     
+      *qy = 0;
+      *qz = 0;
+      *qw = 0;
+      *ax = 0;
+      *ay = 0;
+      *az = 0;
+      *gx = 0;
+      *gy = 0;
+      *gz = 0;
+      status = -1;
+      return status;
+    }
+    *qx = (int16_t&)imu_data;
+    *qy = (int16_t&)imu_data[2];
+    *qz = (int16_t&)imu_data[4];
+    *qw = (int16_t&)imu_data[6];
+    *ax = (int16_t&)imu_data[8];
+    *ay = (int16_t&)imu_data[10];
+    *az = (int16_t&)imu_data[12];
+    *gx = (int16_t&)imu_data[14];
+    *gy = (int16_t&)imu_data[16];
+    *gz = (int16_t&)imu_data[18];
+    return status;
+  }
+
   std::string send_msg(const std::string &msg_to_send, bool print_output = false)
   {
     serial_conn_.FlushIOBuffers(); // Just in case
@@ -96,33 +135,49 @@ public:
     val_2 = std::atoi(token_2.c_str());
   }
 
-  void read_imu_values(float (&quaternion)[4], float (&accel_values)[3], float (&gyro_values)[3])
+  void read_imu(double& qx, double& qy, double& qz, double& qw, int& ax, int& ay, int& az, int& gx, int& gy, int& gz)
   {
-    // message format: euler_angles gyro_values accel_values
     std::string response = send_msg("i\r");
     std::string delimiter = " ";
-    float result[10];
-    size_t pos = 0;
-    int i = 0;
-    std::string token;
-    while ((pos = response.find(delimiter)) != std::string::npos)
-    {
-      token = response.substr(0, pos);
-      result[i] = std::atof(token.c_str());
-      response.erase(0, pos + delimiter.length());
+    size_t start_pos = 0;
+
+    for (int i = 0; i < 9; ++i) {
+        size_t del_pos = response.find(delimiter, start_pos);
+
+        // Assign each value directly to its respective variable
+        switch (i) {
+            case 0: 
+              try {
+                qx = std::stod(response.substr(start_pos, del_pos - start_pos).c_str());;
+              } 
+              catch (const std::invalid_argument&) 
+              {
+                std::cerr << "Argument is invalid\n";
+                throw;
+              } 
+              break;
+            case 1: qy = std::stod(response.substr(start_pos, del_pos - start_pos).c_str()); break;
+            case 2: qz = std::stod(response.substr(start_pos, del_pos - start_pos).c_str()); break;
+            case 3: qw = std::stod(response.substr(start_pos, del_pos - start_pos).c_str()); break;
+            case 4: ax = std::stoi(response.substr(start_pos, del_pos - start_pos).c_str()); break;
+            case 5: ay = std::stoi(response.substr(start_pos, del_pos - start_pos).c_str()); break;
+            case 6: az = std::stoi(response.substr(start_pos, del_pos - start_pos).c_str()); break;
+            case 7: gx = std::stoi(response.substr(start_pos, del_pos - start_pos).c_str()); break;
+            case 8: gy = std::stoi(response.substr(start_pos, del_pos - start_pos).c_str()); break;
+        }
+
+        start_pos = del_pos + delimiter.length();
     }
 
-    quaternion[0] = result[0];
-    quaternion[1] = result[1];
-    quaternion[2] = result[2];
-    quaternion[3] = result[3];
-    accel_values[0] = result[4];
-    accel_values[1] = result[5];
-    accel_values[2] = result[6];
-    gyro_values[0] = result[7];
-    gyro_values[1] = result[8];
-    gyro_values[2] = result[9];
-
+    // Extract the last value
+    gz = std::atoi(response.substr(start_pos).c_str());
+    // const char delimitter[4] = " ";
+    // char* token = strtok(response.c_str(), " ");
+    // while( token != NULL ) 
+    // {
+    //   printf( " %s\n", token ); //printing each token
+    //   token = strtok(NULL, " ");
+    // }
   }
 
   void set_motor_values(int val_1, int val_2)
@@ -142,6 +197,8 @@ public:
 private:
     LibSerial::SerialPort serial_conn_;
     int timeout_ms_;
+    uint8_t imu_data[21];
+    int status = 0;
 };
 
 #endif // DIFFDRIVE_ARDUINO_ARDUINO_COMMS_HPP

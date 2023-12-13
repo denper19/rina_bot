@@ -23,8 +23,8 @@ hardware_interface::CallbackReturn MPU6050Interface::on_init(
   RCLCPP_INFO(rclcpp::get_logger("MPU6050Interface"), "Initializing...");
 
   cfg.device = info_.hardware_parameters["device"];
-  cfg.baud_rate = 57600;
-  cfg.timeout_ms = 100;
+  cfg.baud_rate = std::stoi(info_.hardware_parameters["baud_rate"]);
+  cfg.timeout_ms = std::stoi(info_.hardware_parameters["timeout_ms"]);
 
 	RCLCPP_INFO(rclcpp::get_logger("MPU6050Interface"), "Finished initialization");
 
@@ -36,19 +36,17 @@ MPU6050Interface::export_state_interfaces()
 {
   std::vector<hardware_interface::StateInterface> state_interfaces;
 
-  state_interfaces.emplace_back(hardware_interface::StateInterface(info_.sensors[0].name, info_.sensors[0].state_interfaces[0].name, &orientation.qx));
-	state_interfaces.emplace_back(hardware_interface::StateInterface(info_.sensors[0].name, info_.sensors[0].state_interfaces[1].name, &orientation.qy));
-	state_interfaces.emplace_back(hardware_interface::StateInterface(info_.sensors[0].name, info_.sensors[0].state_interfaces[2].name, &orientation.qz));
-	state_interfaces.emplace_back(hardware_interface::StateInterface(info_.sensors[0].name, info_.sensors[0].state_interfaces[3].name, &orientation.qw));
-	state_interfaces.emplace_back(hardware_interface::StateInterface(info_.sensors[0].name, info_.sensors[0].state_interfaces[4].name, &angular_vel_x));
-	state_interfaces.emplace_back(hardware_interface::StateInterface(info_.sensors[0].name, info_.sensors[0].state_interfaces[5].name, &angular_vel_y));
-	state_interfaces.emplace_back(hardware_interface::StateInterface(info_.sensors[0].name, info_.sensors[0].state_interfaces[6].name, &angular_vel_z));
-	state_interfaces.emplace_back(hardware_interface::StateInterface(info_.sensors[0].name, info_.sensors[0].state_interfaces[7].name, &linear_accel_x));
-	state_interfaces.emplace_back(hardware_interface::StateInterface(info_.sensors[0].name, info_.sensors[0].state_interfaces[8].name, &linear_accel_y));
-	state_interfaces.emplace_back(hardware_interface::StateInterface(info_.sensors[0].name, info_.sensors[0].state_interfaces[9].name, &linear_accel_z));
-
-
-
+  state_interfaces.emplace_back(hardware_interface::StateInterface(info_.sensors[0].name, info_.sensors[0].state_interfaces[0].name, &q.x));
+	state_interfaces.emplace_back(hardware_interface::StateInterface(info_.sensors[0].name, info_.sensors[0].state_interfaces[1].name, &q.y));
+	state_interfaces.emplace_back(hardware_interface::StateInterface(info_.sensors[0].name, info_.sensors[0].state_interfaces[2].name, &q.z));
+	state_interfaces.emplace_back(hardware_interface::StateInterface(info_.sensors[0].name, info_.sensors[0].state_interfaces[3].name, &q.w));
+	state_interfaces.emplace_back(hardware_interface::StateInterface(info_.sensors[0].name, info_.sensors[0].state_interfaces[4].name, &gx));
+	state_interfaces.emplace_back(hardware_interface::StateInterface(info_.sensors[0].name, info_.sensors[0].state_interfaces[5].name, &gy));
+	state_interfaces.emplace_back(hardware_interface::StateInterface(info_.sensors[0].name, info_.sensors[0].state_interfaces[6].name, &gz));
+	state_interfaces.emplace_back(hardware_interface::StateInterface(info_.sensors[0].name, info_.sensors[0].state_interfaces[7].name, &ax));
+	state_interfaces.emplace_back(hardware_interface::StateInterface(info_.sensors[0].name, info_.sensors[0].state_interfaces[8].name, &ay));
+	state_interfaces.emplace_back(hardware_interface::StateInterface(info_.sensors[0].name, info_.sensors[0].state_interfaces[9].name, &az));
+  
   return state_interfaces;
 }
 
@@ -56,12 +54,13 @@ hardware_interface::CallbackReturn MPU6050Interface::on_activate(
   const rclcpp_lifecycle::State & /*previous_state*/)
 {
 
-  // if (comms.connected())
-  // {
-  //   comms.disconnect();
-  // }
+  if (comms.connected())
+  {
+    comms.disconnect();
+  }
 
   comms.connect(cfg.device, cfg.baud_rate, cfg.timeout_ms);
+
 
   RCLCPP_INFO(rclcpp::get_logger("MPU6050Interface"), "Successfully activated!");
 
@@ -71,13 +70,10 @@ hardware_interface::CallbackReturn MPU6050Interface::on_activate(
 hardware_interface::CallbackReturn MPU6050Interface::on_deactivate(
   const rclcpp_lifecycle::State & /*previous_state*/)
 {
-  // if (comms.connected())
-  // {
-  //   comms.disconnect();
-  // }
-
-  comms.disconnect();
-
+  if (comms.connected())
+  {
+    comms.disconnect();
+  }
 
   RCLCPP_INFO(rclcpp::get_logger("MPU6050Interface"), "Successfully deactivated!");
 
@@ -87,19 +83,27 @@ hardware_interface::CallbackReturn MPU6050Interface::on_deactivate(
 hardware_interface::return_type MPU6050Interface::read(
   const rclcpp::Time & /*time*/, const rclcpp::Duration & /*period*/)
 {
+  int status = comms.read_imu_data(&tqx, &tqy, &tqz, &tqw, &tax, &tay, &taz, &tgx, &tgy, &tgz);
 
-  comms.read_imu_values(quaternion, accel_values, gyro_values);
+#ifdef _DEBUG_
 
-  orientation.qx = quaternion[0];
-  orientation.qy = quaternion[1];
-  orientation.qz = quaternion[2];
-  orientation.qw = quaternion[3];
-	linear_accel_x = accel_values[1];
-	linear_accel_y = accel_values[0];
-	linear_accel_z = accel_values[2];
-  angular_vel_x =  gyro_values[1];	
-	angular_vel_y =  gyro_values[0];	
-	angular_vel_z =  gyro_values[2];	
+  if(status < 0)
+  {
+    RCLCPP_ERROR(rclcpp::get_logger("DiffDriveArduinoHardware"), "IMU timed out. Setting all IMU values to 0.");
+  }
+
+#endif
+  
+  q.x = tqx / 100.0f;
+  q.y = tqy / 100.0f;
+  q.z = tqz / 100.0f;
+  q.w = tqw / 100.0f;
+  ax = tax / 16384.0;
+  ay = tay / 16384.0;
+  az = taz / 16384.0;
+  gx = tgx / 131.0;
+  gy = tgy / 131.0;
+  gz = tgz / 131.0;	
 
   return hardware_interface::return_type::OK;
 }

@@ -83,5 +83,5 @@ def generate_launch_description():
         diff_drive_spawner,
         joint_broad_spawner,
         joy_launch,
-        ekf_sim
+        # ekf_sim
     ])
