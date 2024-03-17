@@ -40,7 +40,7 @@
                 <state_interface name='linear_acceleration.z'/>  
             </sensor> -->
         </ros2_control>
-         <!-- MPU6050 sensor--> 
+         <!-- MPU6050 sensor 
         <ros2_control name='MPU6050' type='sensor'>
             <hardware>
                 <plugin>mpu6050_interface/MPU6050Interface</plugin>
@@ -60,7 +60,7 @@
                 <state_interface name='linear_acceleration.y'/>
                 <state_interface name='linear_acceleration.z'/>  
             </sensor>
-        </ros2_control>
+        </ros2_control>-->
     </xacro:unless>
 
     <xacro:if value="$(arg sim_mode)">

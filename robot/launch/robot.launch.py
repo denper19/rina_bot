@@ -97,5 +97,5 @@ def generate_launch_description():
         start_delayed_imu_broadcaster_spawner,
         # won't need on raspi, can launch from the computer directly
         joy_launch,
-        ekf_real,
+        # ekf_real,
     ])
