@@ -12,7 +12,7 @@
 - [x] IMU URDF simulation
 - [x] EKF for IMU + Odom fusion
 - [x] Add GPS Simulation
-- [ ] Look into adding Camera drivers
+- [x] Look into adding Camera drivers
 - [ ] Look into GPS drivers
 - [ ] Look into ESP32 Camera
 - [ ] Add Dockers
